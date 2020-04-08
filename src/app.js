@@ -2,20 +2,18 @@ const express = require("express");
 const { uuid, isUuid } = require('uuidv4'); 
 const cors = require("cors");
 
-// const { uuid } = require("uuidv4");
-
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.use(logRequests); //Controle de rotas
-app.use('/repositories/:id', validadeRepositoriesId); //Valida ID 
+app.use(logRequests); 
+app.use('/repositories/:id', validadeRepositoriesId); 
 
 //VAR PRINCIPAL
 const repositories = [];
 
-// CONTROLE DE ROTAS - LOG
+
 function logRequests(request, response, next) {
   const { method, url} = request;
   const logLabel = `[${method.toUpperCase()}] ${url}`;
